@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, redirect, url_for,  render_template
 from flask_sqlalchemy import SQLAlchemy
 
@@ -59,5 +60,5 @@ def delete(todo_id):
 
 if __name__ == "__main__":
     db.create_all()
-   # parser = argparse.ArgumentParser(description=__description__, epilog="Developed by {} on {}".format(",".joing(__authors__), __date__))
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
